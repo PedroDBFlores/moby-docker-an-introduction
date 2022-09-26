@@ -1,0 +1,19 @@
+services:
+  redis-db:
+    container_name: redis-db
+    image: redis:latest
+    ports:
+      - 6379:6379
+  backend:
+    container_name: backend
+    build:
+      context: ../
+      dockerfile: dockerfiles/backend.Dockerfile
+    environment:
+      REDIS_HOSTNAME: redis-db
+      REDIS_PORT: 6379 # Because it's in the same internal network :)
+      PORT: 6565
+    ports:
+      - 6565:6565
+    depends_on:
+      - redis-db
