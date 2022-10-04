@@ -1,6 +1,6 @@
 const args = Deno.args;
 const hostname = "0.0.0.0";
-const port = Number.parseInt(args[0] ?? Deno.env.get("PORT")!);
+const port = Number.parseInt(args[0]);
 
 const listener = Deno.listen({
     hostname,

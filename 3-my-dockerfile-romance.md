@@ -11,8 +11,6 @@ CMD bash
 
 It would have three layers, them being the delta of the changes of the previous layer. All these layers are read only, so even if you do some changes on a running container like reading/writing or deleting are made to a separate layer that is completely separate from the image.
 
------
-
 **Treat the image as always being readonly!**
 
-We have our own Dockerfile right [here](./Dockerfile), which we will go through now. We can build it with `docker build -t my-go-image .` and run it with `docker run --rm my-go-image`
+We have our own Dockerfile right [here](./my-go-app/Dockerfile), which we will go through now. We can build it with `docker build -t my-go-image .` and run it with `docker run --rm my-go-image`

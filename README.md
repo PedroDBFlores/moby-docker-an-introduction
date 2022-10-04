@@ -6,9 +6,15 @@ author:
 theme:
 - Darmstadt
 date:
-- September 2022
+- 12 October 2022
 ---
 
+# What's going to happen during this presentation?
+
+- A small introduction about Docker
+- Core parts used on our day 2 day during work
+- Some tips and tricks on Docker usage
+- Questions & Feedback
 
 # What's Docker after all?
 

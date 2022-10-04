@@ -6,4 +6,4 @@ WORKDIR /app
 COPY /src .
 RUN deno cache main.ts 
 # Line above caches in ADVANCE
-CMD ["run", "--allow-net", "main.ts", 12000]
+CMD ["run", "--allow-net", "main.ts", "12000"]
