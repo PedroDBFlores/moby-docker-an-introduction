@@ -2,17 +2,17 @@
 
 One small thing that might be relevant (mostly) during your local development is bind mounts. With bind mounts you can expose part of your host's filesystem.
 
-Let's try to see my `.zshenv`, which only has Cargo stuff.
+Let's try to see my `$HOME`.
 
-`docker run --mount type=bind,source="$HOME",target=/bind alpine:latest sh -c 'cat /bind/.zshenv'`
+`docker run --mount type=bind,source="$HOME",target=/bind alpine:latest sh -c 'ls -la /bind/'`
 
 And of course, trying to write will fail with `readonly`
 
-`docker run --mount type=bind,source="$HOME",target=/bind,readonly alpine:latest sh -c 'echo Cannot touch this >> /bind/.zshenv'`
+`docker run --mount type=bind,source="$HOME",target=/bind,readonly alpine:latest sh -c 'echo Cannot touch this >> /bind/a-file'`
 
 -----
 
-# How about in Docker compose?
+## How about in Docker compose?
 
 You can do it like this:
 

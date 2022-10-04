@@ -14,8 +14,6 @@ Let's try it out, let's create a volume and bind it to a container.
 
 `docker run -d -i -t --name busybox-with-container --mount source=my-volume,target=/vol busybox`
 
------
-
 If you run `docker inspect busybox-with-container` you will see it in the `mounts` section.
 
 Let's check what's inside:
@@ -31,19 +29,16 @@ cat /vol/my-file.txt
 Now let's stop the container and restart it to see that our file didn't disappear.
 
 ````bash
+docker restart busybox-with-container
 docker exec -it busybox-with-container sh
 cat /vol/my-file.txt
 ````
-
------
 
 To prove that it can attach to whatever we want, let's run: `docker run --mount source=my-volume,target=/vol alpine:latest cat /vol/my-file.txt`
 
 And you can also mount it as readonly and try to write to it: `dockerfiles docker run --mount source=my-volume,target=/vol,readonly alpine:latest sh -c 'echo Cannot touch this >> /vol/my-file.txt'`
 
------
-
-# What about the compose thing you showed previously?
+## What about the compose thing you showed previously?
 
 This also applies to docker-compose:
 

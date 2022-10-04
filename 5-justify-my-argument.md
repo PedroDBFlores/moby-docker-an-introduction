@@ -9,6 +9,8 @@ If you fail to provide defaults for ARGs in your Dockerfile, and you don't provi
 
 Take also note that the ARGs provided during build time can be inspected by `docker history`, so **NEVER** provide secrets via arguments.
 
+Let's add below the `FROM` command the following code on the Dockerfile on the `a-deno-server` folder.
+
 ````dockerfile
 ARG TEAM=team-budgie
 LABEL CONTRIBUTERS=${TEAM}

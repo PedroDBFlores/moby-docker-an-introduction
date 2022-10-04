@@ -1,7 +1,3 @@
-# Extra stuff
-
-You will be amazed!
-
 # Architecture woes
 
 For a while we might have teams with different machine architectures (AMD64 and ARM64) on MacOs. You can "fix it" on the ARM Macs by specifying (for example):
@@ -54,7 +50,3 @@ RUN npm ci
 COPY /src .
 RUN npm run build
 ````
-
-# Thank you!
-
-Questions?
