@@ -19,7 +19,7 @@ If you run `docker inspect busybox-with-container` you will see it in the `mount
 Let's check what's inside:
 
 ````bash
-docker exec -it busybox-with-container sh
+docker exec -it busybox-with-volume sh
 ls -la /vol
 # Let's write something there
 echo "Hello from the other side" > /vol/my-file.txt`
@@ -29,8 +29,8 @@ cat /vol/my-file.txt
 Now let's stop the container and restart it to see that our file didn't disappear.
 
 ````bash
-docker restart busybox-with-container
-docker exec -it busybox-with-container sh
+docker restart busybox-with-volume
+docker exec -it busybox-with-volume sh
 cat /vol/my-file.txt
 ````
 

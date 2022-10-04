@@ -6,11 +6,11 @@ We have our Dockerfile right [here](./a-deno-server/Dockerfile), which we will g
 
 ## Exposé... actually EXPOSE
 
-Run `docker run --rm -p 12000:12000 my-deno-webserver`. What's up with the `-p 12000:12000` part?
+Let's try it like this: `docker run --rm my-deno-webserver`. What happens to the Postman call?
 
 By default all containers are blocked from exposing their ports to the outside (host machine). In order for this to happen we need to be explicit about which ports we allow through from the container, in this case the port argument reads like `-p HOST_PORT:CONTAINER_PORT`, they don't need to be the same and there can be multiple `-p` arguments.
 
-Let's try it like this: `docker run --rm my-deno-webserver`. What happens to the Postman call?
+Run `docker run --rm -p 12000:12000 my-deno-webserver` and try it again on Postman.
 
 ````dockerfile
 EXPOSE 12000
