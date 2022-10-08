@@ -1,14 +1,3 @@
----
-title:
-- Moby Docker, an introduction
-author:
-- Pedro Flores
-theme:
-- Darmstadt
-date:
-- 12 October 2022
----
-
 # What's going to happen during this presentation?
 
 - A small introduction about Docker
@@ -16,6 +5,8 @@ date:
 - Some tips and tricks on Docker usage
 - Questions & Feedback
 
+All the source code can be found [on my Github](https://github.com/PedroDBFlores/moby-docker-an-introduction)
+  
 # What's Docker after all?
 
 A project that automates the deployment of apps by providing a sandbox over the host operating system.
