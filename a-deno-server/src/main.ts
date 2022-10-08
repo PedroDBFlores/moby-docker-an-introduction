@@ -1,3 +1,5 @@
+import fetchJoke from "./dad-jokes.ts";
+
 const args = Deno.args;
 const hostname = "0.0.0.0";
 const port = Number.parseInt(args[0]);
@@ -21,6 +23,7 @@ async function serveHttp(conn: Deno.Conn) {
 
 async function handleRequest(req: Deno.RequestEvent) {
     if (req.request.method == "GET") {
-        await req.respondWith(new Response("Hello from Deno!", { status: 200 }));
+        const joke = await fetchJoke();
+        await req.respondWith(new Response(joke.joke, { status: 200 }));
     }
 }
