@@ -16,5 +16,5 @@ WORKDIR /usr/app/my-go-app
 # In this case, we're copying from the previous step the compiled file
 # to this step
 COPY --from=builder /usr/src/my-go-app/my-go-app .
-# Setting the default instruction when the image is run
+# The main purpose of a CMD is to provide defaults for an executing container
 CMD [ "./my-go-app" ]
