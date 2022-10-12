@@ -62,6 +62,8 @@ const port = Number.parseInt(args[0]
 
 If we build and run it, it should still work the same. Let's change the port though, run this:
 
-`docker run --rm -p 6565:6565 -e "PORT=6565" my-deno-webserver`
+`docker run -p 6565:6565 -e "PORT=6565" my-deno-webserver`
 
 And our port should now be 6565, and using Postman now on that port it should be reachable.
+
+More info about ARGs and ENVs [here](https://vsupalov.com/docker-arg-env-variable-guide/)

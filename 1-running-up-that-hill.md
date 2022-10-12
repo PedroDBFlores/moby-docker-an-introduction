@@ -17,8 +17,6 @@ This alone doesn't do much, let's **actually** use the image that we've download
 docker run --rm busybox ls -la
 ````
 
-
-
 So running the `busybox` image and then the command to be run in that image is `ls -la`, which will list the / directory, long listed and not ignoring entries starting with a dot.
 
 However there's small detail here. Every time you run an image on Docker it will create a container that will be lying there, unless you provide the `--rm` flag.

@@ -1,16 +1,29 @@
 # My first Dockerfile
 
-For this example, you can find inside the `pkg` folder a super simple Go application. The idea here is to build that application and run it inside a container. In layman's terms, a Dockerfile is a file that describes how to build an image.
-Some instructions are understood as a layer of a Docker image, for the resulting image of:
+I've developed a very simple simple Go application that you can find on the repo, on the folder `my-go-app/pkg` The goal of the demonstration that follows is to perform both build and run steps of an application on a container.
+
+We have our own Dockerfile right [here](./my-go-app/Dockerfile), and respective [code](./my-go-app/pkg).
+
+Quick pass on the Dockerfile:
 
 ````dockerfile
-FROM ubuntu:22.04
-RUN apt install build-essentials git
-CMD bash
+# The image to use for building our app, in this case an Alpine image with Go support builtin
+# A Dockerfile should always start with a FROM statement
+FROM golang:1.19-alpine as builder
+# Setting the working directory
+WORKDIR /usr/src/my-go-app
+# Copy the pkg folder to our working directory
+COPY pkg/ .
+# Runs go build at our current directory
+RUN go build
+# The image to use for running our app, in this case an Alpine image 
+FROM alpine:latest as runner
+# Setting the working directory again
+WORKDIR /usr/app/my-go-app
+# In this case, we're copying from the previous step the compiled file to this step
+COPY --from=builder /usr/src/my-go-app/my-go-app .
+# The main purpose of a CMD is to provide defaults for an executing container
+CMD [ "./my-go-app" ]
 ````
 
-It would have three layers, them being the delta of the changes of the previous layer. All these layers are read only, so even if you do some changes on a running container like reading/writing or deleting are made to a separate layer that is completely separate from the image.
-
-**Treat the image as always being readonly!**
-
-We have our own Dockerfile right [here](./my-go-app/Dockerfile), which we will go through now. We can build it with `docker build -t my-go-image .` and run it with `docker run --rm my-go-image`
+We can build it with `docker build -t my-go-image .` and run it with `docker run --rm my-go-image`, where we will expect to see the output `Hello from inside a container`.

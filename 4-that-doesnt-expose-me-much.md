@@ -6,7 +6,7 @@ We have our Dockerfile right [here](./a-deno-server/Dockerfile), which we will g
 
 ## Exposé... actually EXPOSE
 
-Let's try it like this: `docker run --rm my-deno-webserver`. What happens to the Postman call?
+Let's try it like this: `docker run --rm my-deno-webserver`. Try to call <http://localhost:12000>, were you able to obtain any answer from the server?
 
 By default all containers are blocked from exposing their ports to the outside (host machine). In order for this to happen we need to be explicit about which ports we allow through from the container, in this case the port argument reads like `-p HOST_PORT:CONTAINER_PORT`, they don't need to be the same and there can be multiple `-p` arguments.
 

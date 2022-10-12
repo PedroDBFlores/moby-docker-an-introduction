@@ -2,9 +2,9 @@
 
 Docker is also able to compose, and when I mean compose I mean setup some kind of infrastructure on which your containers run.
 
-Welcome to `docker-compose`, that allows you to define a Docker application running one or more containers.
+Welcome to `docker compose`, that allows you to define a Docker application running one or more containers.
 
-Let's run `docker-compose -p compose-moonlight up -d --build` on the `a-deno-server-part-deux` folder.
+Let's run `docker compose -p compose-moonlight up -d --build` on the `a-deno-server-part-deux` folder.
 
 ## One more thing
 

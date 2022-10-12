@@ -36,7 +36,13 @@ cat /vol/my-file.txt
 
 To prove that it can attach to whatever we want, let's run: `docker run --mount source=my-volume,target=/vol alpine:latest cat /vol/my-file.txt`
 
-And you can also mount it as readonly and try to write to it: `dockerfiles docker run --mount source=my-volume,target=/vol,readonly alpine:latest sh -c 'echo Cannot touch this >> /vol/my-file.txt'`
+And you can also mount it as readonly and try to read it:
+
+`dockerfiles docker run --mount source=my-volume,target=/vol,readonly alpine:latest cat /vol/my-file.txt`
+
+But it should fail writing to it:
+
+`dockerfiles docker run --mount source=my-volume,target=/vol,readonly alpine:latest sh -c 'echo Cannot touch this >> /vol/my-file.txt'`
 
 ## What about the compose thing you showed previously?
 
