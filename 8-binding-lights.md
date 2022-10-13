@@ -4,15 +4,15 @@ One small thing that might be relevant (mostly) during your local development is
 
 Let's try to see my `$HOME`.
 
-`docker run --mount type=bind,source="$HOME",target=/bind alpine:latest sh -c 'ls -la /bind/'`
+`docker run --rm --mount type=bind,source="$HOME",target=/bind alpine:latest sh -c 'ls -la /bind/'`
 
 In readonly mode it should still be able to read:
 
-`docker run --mount type=bind,source="$HOME",target=/bind,readonly alpine:latest sh -c 'ls -la /bind/'`
+`docker run --rm --mount type=bind,source="$HOME",target=/bind,readonly alpine:latest sh -c 'ls -la /bind/'`
 
 And of course, trying to write will fail with `readonly`
 
-`docker run --mount type=bind,source="$HOME",target=/bind,readonly alpine:latest sh -c 'echo Cannot touch this >> /bind/a-file'`
+`docker run --rm --mount type=bind,source="$HOME",target=/bind,readonly alpine:latest sh -c 'echo Cannot touch this >> /bind/a-file'`
 
 -----
 

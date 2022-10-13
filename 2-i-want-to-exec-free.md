@@ -11,7 +11,7 @@ docker run --name busybox-with-container --rm -dit busybox sh
 Being:
 
 - --rm : Removing the container after it exited
-- -d : Detached mode, exits wien the daemon exits
+- -d : Detached mode, exits when the daemon exits
 - -i : Keep STDIN open even it not attached
 - -t : Allocate a pseudo-TTY
   
@@ -23,4 +23,10 @@ It will be open in your terminal. Now to test this, open two terminals and run:
 docker exec -it busybox-with-container sh
 ````
 
-Create a `tmp/my_folder` in the first terminal, and try to check in the second one if the folder is still there.
+Do the following:
+
+- Create a new folder somewhere on the second terminal
+- Go back to the first terminal
+- Check for existence of said folder
+- ???
+- PROFIT

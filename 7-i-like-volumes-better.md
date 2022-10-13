@@ -12,7 +12,7 @@ docker volume rm my-volume # Remove a specific volume
 
 Let's try it out, let's create a volume and bind it to a container.
 
-`docker run -d -i -t --name busybox-with-container --mount source=my-volume,target=/vol busybox`
+`docker run -dit --rm --name busybox-with-container --mount source=my-volume,target=/vol busybox`
 
 If you run `docker inspect busybox-with-container` you will see it in the `mounts` section.
 
@@ -34,15 +34,15 @@ docker exec -it busybox-with-volume sh
 cat /vol/my-file.txt
 ````
 
-To prove that it can attach to whatever we want, let's run: `docker run --mount source=my-volume,target=/vol alpine:latest cat /vol/my-file.txt`
+To prove that it can attach to whatever we want, let's run: `docker run --rm --mount source=my-volume,target=/vol alpine:latest cat /vol/my-file.txt`
 
 And you can also mount it as readonly and try to read it:
 
-`dockerfiles docker run --mount source=my-volume,target=/vol,readonly alpine:latest cat /vol/my-file.txt`
+`dockerfiles docker run --rm --mount source=my-volume,target=/vol,readonly alpine:latest cat /vol/my-file.txt`
 
 But it should fail writing to it:
 
-`dockerfiles docker run --mount source=my-volume,target=/vol,readonly alpine:latest sh -c 'echo Cannot touch this >> /vol/my-file.txt'`
+`dockerfiles docker run --rm --mount source=my-volume,target=/vol,readonly alpine:latest sh -c 'echo Cannot touch this >> /vol/my-file.txt'`
 
 ## What about the compose thing you showed previously?
 

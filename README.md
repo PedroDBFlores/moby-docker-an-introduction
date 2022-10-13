@@ -1,4 +1,4 @@
-# What's going to happen during this presentation?
+# What's the aim here?
 
 - A small introduction about Docker
 - Core parts used on our day 2 day during work
@@ -7,13 +7,13 @@
 
 All the source code can be found [on my Github](https://github.com/PedroDBFlores/moby-docker-an-introduction)
   
-# What's Docker after all?
+## What's Docker after all?
 
-A project that automates the deployment of apps by providing a sandbox over the host operating system.
+An application that automates the deployment of apps by providing a sandbox over the host operating system.
 
-It might seem like a VM, but it makes use of low level techniques present in the Linux kernel that allow for this kind of very lightweight containers.
+It might seem like a VM, but it makes use of low level techniques present in the Linux kernel that allow for this kind of very lightweight container
 
-# What are containers? Is that what they ship overseas?
+## What are containers? Is that what they ship overseas?
 
 Yes. But also a way to isolate applications by themselves, with their very specific environment variables and dependencies.
 
@@ -21,8 +21,19 @@ They are portable because they're decoupled from the underlying operating system
 
 And it helps avoid the **it works on my machine** answer that we sometimes hear.
 
-# What's the aim here?
+More info about containers [here](https://www.docker.com/resources/what-container/)
 
+## How can I install Docker?
+
+You probably already have it installed, however...
+
+````bash
+brew install docker
+````
+
+And we're done! After installation open Docker Desktop it to check that everything is working.
+
+## Ahoy
 
 Learn how to run images, containerize stuff and orchestrate project deployment with `docker-compose`.
 

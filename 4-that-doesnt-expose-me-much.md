@@ -2,6 +2,10 @@
 
 Let's just not print something on STDOUT since it's not that useful, but hosting a webserver might be a little bit better. Let's write something with the Deno runtime.
 
+Deno is a simple, modern and secure runtime for JavaScript, TypeScript, and WebAssembly that uses V8 and is built in Rust.
+
+Not my words, go to deno.land and see for yourself!
+
 We have our Dockerfile right [here](./a-deno-server/Dockerfile), which we will go through now. Let's build it with `docker build -t my-deno-webserver:latest .`
 
 ## Exposé... actually EXPOSE
@@ -10,13 +14,15 @@ Let's try it like this: `docker run --rm my-deno-webserver`. Try to call <http:/
 
 By default all containers are blocked from exposing their ports to the outside (host machine). In order for this to happen we need to be explicit about which ports we allow through from the container, in this case the port argument reads like `-p HOST_PORT:CONTAINER_PORT`, they don't need to be the same and there can be multiple `-p` arguments.
 
-Run `docker run --rm -p 12000:12000 my-deno-webserver` and try it again on Postman.
+Run `docker run --rm -p 12000:12000 my-deno-webserver` and try to call the server endpoint again.
+
+There's a command for Dockerfile that's:
 
 ````dockerfile
 EXPOSE 12000
 ````
 
-Let's put it on our Dockerfile. This might seem that it will autoexpose the port but actually it only serves as metadata for who is running the image, so that the consumer is aware that which ports are intended to be exposed. Then it makes sense to use the `-p 12000:12000` argument since we know what to expose.
+This might seem that it will autoexpose the port but actually it only serves as metadata for who is running the image, so that the consumer is aware that which ports are intended to be exposed. Then it makes sense to use the `-p 12000:12000` argument since we know what to expose.
 
 If you're feeling lucky, you can use the `-P` argument to randomly expose the port mentioned in the Dockerfile, it might or not match the one on the Dockerfile, you can check which port is assigned by running `docker ps`.
 

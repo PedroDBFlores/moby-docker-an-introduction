@@ -1,13 +1,11 @@
 
 # Arguments
 
-**Disclaimer**, never used arguments for build time so bear with me.
+**Disclaimer**, never used arguments for an actual need.
 
 Arguments are known as build-time variables, and cannot be used at all during the container runtime or either on `CMD` or `ENTRYPOINT` commands.
 
 If you fail to provide defaults for ARGs in your Dockerfile, and you don't provide them when building, the build will fail.
-
-Take also note that the ARGs provided during build time can be inspected by `docker history`, so **NEVER** provide secrets via arguments.
 
 Let's add below the `FROM` command the following code on the Dockerfile on the `a-deno-server` folder.
 
@@ -36,7 +34,7 @@ But if we run it with `docker build -t my-deno-webserver:latest --build-arg TEAM
 
 This is only a simple example, something more concrete would be passing as an arg a version of repo so that a versioned image can be built, like the image would clone a repo and build itself.
 
-**Note**: You cannot use `ARG` in a `CMD` statement without some tricks.
+Take also note that the ARGs provided during build time can be inspected by `docker history`, so **NEVER** provide secrets via arguments.
 
 # Environment
 
@@ -58,12 +56,10 @@ const port = Number.parseInt(args[0]
     ?? Deno.env.get("PORT")!);
 ````
 
------
-
 If we build and run it, it should still work the same. Let's change the port though, run this:
 
 `docker run -p 6565:6565 -e "PORT=6565" my-deno-webserver`
 
-And our port should now be 6565, and using Postman now on that port it should be reachable.
+And our port should now be 6565, and using calling the server now on that port should work.
 
 More info about ARGs and ENVs [here](https://vsupalov.com/docker-arg-env-variable-guide/)

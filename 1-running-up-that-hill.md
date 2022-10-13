@@ -23,13 +23,18 @@ However there's small detail here. Every time you run an image on Docker it will
 
 ## Being interactive
 
-We can run more than one command, let's open an **in**teractive session:
+We can run more than one command on a container, is just a matter of opening a terminal on the container and sh'ing into it.
+
+Let's run the busybox image and sh into it.
 
 ````bash
-docker run -it busybox sh
+docker run --rm -it busybox sh
 ````
 
-We've now opened an TTY terminal to a busybox container. Just run whatever you feel like, you can even run `rm -rf /bin` and exit the container. When you run it again, a fresh container is recreated and thus it's like nothing happened.
+-i keeps STDIN when not attached
+-t open pseudo TTY (teletypewriter)
+
+With this we can open a terminal to our container and run whatever our heart desires. When you run it again, whatever you've done on that container will not be persisted. We've now opened an TTY terminal to a busybox container. Just run whatever you feel like, you can even run `rm -rf /bin` and exit the container.
 
 After playing you can delete them manually with `docker rm CONTAINER_ID`
 or with `$ docker rm $(docker ps -a -q -f status=exited)` (of course beware of the second one if you have already additional containers created!)
