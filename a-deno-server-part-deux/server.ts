@@ -31,7 +31,11 @@ const handleRequest = async (req: Deno.RequestEvent, redis: Redis) => {
                     break;
                 }
                 const data = await redis.get(key!);
-                await req.respondWith(new Response(data, { status: 200 }));
+                if (data) {
+                    await req.respondWith(new Response(data, { status: 200 }));
+                } else {
+                    await req.respondWith(new Response("Key not found", { status: 404 }))
+                }
                 break;
             }
         case "POST":
