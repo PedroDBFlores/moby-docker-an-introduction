@@ -4,6 +4,11 @@ const args = Deno.args;
 const hostname = "0.0.0.0";
 const port = Number.parseInt(args[0]);
 
+Deno.addSignalListener("SIGINT", () => {
+    console.log("interrupted!");
+    Deno.exit();
+});
+
 const listener = Deno.listen({
     hostname,
     port
