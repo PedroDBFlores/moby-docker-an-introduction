@@ -37,7 +37,7 @@ docker logs CONTAINER_NAME
 # Show running containers
 docker ps
 
-# Show all containers 
+# Show all containers, regardless of state
 docker ps -a
 
 # Delete a container
@@ -120,7 +120,7 @@ docker search text
 ````Dockerfile
 FROM IMAGE # Base image for the subsequent commands
 
-COPY /from /to # Copy from the host to a contaienr directory
+COPY /from /to # Copy from the host to a container directory
 
 ADD /from /to # Same as copy but unzips files and accepts HTTP urls.
 
@@ -141,20 +141,3 @@ EXPOSE ports.. # Sets metadata to tell which ports should be exposed when runnin
 ````
 
 If you want to build an image from scratch, see [here](https://docs.docker.com/develop/develop-images/baseimages/#creating-a-simple-parent-image-using-scratch).
-
-## Docker Compose
-
-Basic example:
-
-````yaml
-services:
-    web:
-        context:
-        container_name: web-server
-        dockerfile: Dockerfile
-        ports:
-            - "5000:5000" # Exposing ports
-    redis:
-        image: redis
-...
-````
